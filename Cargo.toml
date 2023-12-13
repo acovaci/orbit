@@ -1,0 +1,17 @@
+[package]
+name = "orbit"
+description = "ORBIT: an Open source Rust-based implementation of a Data build Tool.\n\nInspired by DBT Core."
+version = "0.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "4.4.11", features = ["derive", "cargo"] }
+regex = "1.10.2"
+tokio = { version = "1.35.0", features = [
+    "macros",
+    "rt-multi-thread",
+    "process",
+    "io-util",
+] }

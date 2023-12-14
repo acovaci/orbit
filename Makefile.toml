@@ -1,0 +1,24 @@
+[tasks.setup_venv]
+description = "Setting up Python virtual environment..."
+script_runner = "@shell"
+script = ["python3 -m venv .venv", ".venv/bin/pip install dbt-core"]
+
+[tasks.build_rust]
+description = "Building Rust crate..."
+command = "cargo"
+args = ["build"]
+
+[tasks.create_symlink]
+description = "Creating symlink..."
+script_runner = "@shell"
+script = ["ln -s scripts/run_debug.sh orbit", "chmod +x orbit"]
+
+[tasks.clean]
+clear = true
+description = "Cleaning up..."
+script_runner = "@shell"
+script = ["cargo clean", "rm -rf .venv", "rm -rf logs", "rm -f orbit"]
+
+[tasks.default]
+clear = true
+dependencies = ["setup_venv", "build_rust", "create_symlink"]

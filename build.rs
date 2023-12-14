@@ -1,22 +1,21 @@
-use std::{
-    fs::create_dir_all,
-    process::{Command, Stdio},
-};
+use std::process::{Command, Stdio};
 
 fn main() {
-    create_dir_all(".venv").expect("failed to create dir");
-
     Command::new("python3")
         .args(&["-m", "venv", ".venv"])
         .stdout(Stdio::piped())
         .spawn()
-        .expect("failed to spawn process");
+        .expect("failed to spawn process")
+        .wait()
+        .expect("failed to wait on child");
 
     get_venv_command("python")
-        .args(&["-m", "pip", "install", "-r", "dbt"])
+        .args(&["-m", "pip", "install", "dbt-core"])
         .stdout(Stdio::piped())
         .spawn()
-        .expect("failed to spawn process");
+        .expect("failed to spawn process")
+        .wait()
+        .expect("failed to wait on child");
 }
 
 fn get_venv_command(program: &str) -> Command {

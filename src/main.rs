@@ -157,8 +157,6 @@ fn main() {
         Some(Commands::Source { _args: args }) => command::source::run(args),
         Some(Commands::Test { _args: args }) => command::test::run(args),
         Some(Commands::Version { _args: args }) => command::version::run(args),
-
-        Some(_) => {}
         None => {}
     };
 }

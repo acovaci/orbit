@@ -10,11 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Build script that handles downloading and installing the latest version of the
-  `dbt` python package.
+  `dbt-core` python package.
 - Basic wrapper that calls the `dbt` python package with the same arguments
   passed to the `orbit` binary.
-- The `version` command, which prints the version of this crate and the version
-  of the `dbt` python package.
 
 ### Changed
 
